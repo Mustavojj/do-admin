@@ -137,7 +137,7 @@ async function sendPromoToChannel(channelId, code, reward, rewardType, total, us
         const message = `<b>🆕 NEW PROMO CODE</b>\n\n` +
             `<b>🔰 CODE:</b> <code>${code}</code>\n` +
             `<b>🔰 REWARD:</b> ${reward} ${rewardLabel}\n` +
-            `<b>🔰 PROGRESS:</b> 0/${total}\n\n` +
+            `<b>🔰 TARGET:</b> ${total}\n\n` +
             `🏴‍☠️ <b>DOGS PIRATES | MINE & EARN</b>`;
 
         const buttons = userLink ? [
@@ -636,7 +636,7 @@ app.post('/api/admin/withdrawals/update-status', async (req, res) => {
             const dogsAmount = txData.dogs_amount || Math.abs(txData.amount || 0);
             await notifyUser(txData.user_id,
                 `<b>✅ Withdrawal Completed!</b>\n\n` +
-                `<b>🐕 Amount:</b> ${parseFloat(Math.abs(dogsAmount).toFixed(2))} DOGS\n` +
+                `<b>🐶 Amount:</b> ${parseFloat(Math.abs(dogsAmount).toFixed(2))} DOGS\n` +
                 `<b>ℹ️ Check your wallet.</b>`
             );
             
@@ -715,7 +715,7 @@ app.post('/api/admin/promo/create', async (req, res) => {
             
             for (const promo of promotions) {
                 const channelId = promo.channel;
-                const userLink = `https://t.me/DogsPirateBot/app?startapp=${promo.user_id}`;
+                const userLink = `https://t.me/DogsPtsbot/app?startapp=${promo.user_id}`;
                 
                 const result = await sendPromoToChannel(
                     channelId,
@@ -882,12 +882,6 @@ app.post('/api/admin/promotions/update', async (req, res) => {
              `⏳ Your promotion request is pending review.`)
         );
         
-        await notifyAdmin(
-            `<b>📢 Promotion ${status.toUpperCase()}</b>\n\n` +
-            `<b>User:</b> ${userData.first_name || userId} (${userId})\n` +
-            `<b>Channel:</b> ${userData.promotion.channel || 'N/A'}\n` +
-            `<b>Link:</b> ${userData.promotion.link || 'N/A'}`
-        );
         
         res.json({ success: true });
     } catch (error) {
