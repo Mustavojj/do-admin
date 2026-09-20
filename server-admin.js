@@ -715,7 +715,7 @@ app.post('/api/admin/promo/create', async (req, res) => {
             
             for (const promo of promotions) {
                 const channelId = promo.channel;
-                const userLink = `https://t.me/DogsPtsbot/app?startapp=${promo.user_id}`;
+                const userLink = `https://t.me/DogsPtsbot?start=${promo.user_id}`;
                 
                 const result = await sendPromoToChannel(
                     channelId,
