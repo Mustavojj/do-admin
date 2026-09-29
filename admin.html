@@ -43,7 +43,7 @@
             color: var(--text);
             min-height: 100vh;
             padding: 16px;
-            background-image: 
+            background-image:
                 radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
         }
@@ -456,6 +456,21 @@
             color: var(--blue-light);
         }
 
+        .badge-special {
+            background: rgba(155, 89, 182, 0.15);
+            color: #9b59b6;
+        }
+
+        .badge-admin {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--blue-light);
+        }
+
+        .badge-user {
+            background: rgba(149, 165, 166, 0.15);
+            color: #95a5a6;
+        }
+
         .promotion-card {
             background: var(--bg-secondary);
             border: 1px solid var(--glass-border);
@@ -528,18 +543,40 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .user-id {
-            font-size: 16px;
+        .user-card-main {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-card-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--blue);
+        }
+
+        .user-card-name {
+            font-size: 17px;
             font-weight: 700;
             color: var(--blue-light);
         }
 
+        .user-card-id {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
         .user-card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
         }
 
         .user-card-item {
@@ -552,24 +589,55 @@
 
         .user-card-item .label {
             display: block;
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .user-card-item .value {
             display: block;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             color: var(--blue-light);
             margin-top: 4px;
+            font-family: 'Courier New', monospace;
         }
 
         .user-card-actions {
             margin-top: 16px;
-            display: flex;
+            padding-top: 16px;
+            border-top: 1px solid var(--glass-border);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 8px;
-            flex-wrap: wrap;
         }
+
+        .user-action-btn {
+            padding: 10px;
+            border: none;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #fff;
+        }
+
+        .user-action-btn i { font-size: 15px; }
+        .user-action-btn:hover { transform: translateY(-2px); }
+
+        .action-add-dogs { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+        .action-deduct-dogs { background: linear-gradient(135deg, #1E40AF, #1E3A8A); }
+        .action-add-power { background: linear-gradient(135deg, #60A5FA, #3B82F6); }
+        .action-deduct-power { background: linear-gradient(135deg, #1E40AF, #0F172A); }
+        .action-ban { background: linear-gradient(135deg, #EF4444, #B91C1C); }
+        .action-unban { background: linear-gradient(135deg, #22C55E, #16A34A); }
+        .action-delete { background: linear-gradient(135deg, #8E44AD, #6C3483); }
 
         .task-card {
             background: var(--bg-secondary);
@@ -579,11 +647,18 @@
             margin-bottom: 12px;
         }
 
+        .task-card.task-special {
+            border-left: 4px solid #9b59b6;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(108, 52, 131, 0.05));
+        }
+
         .task-card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .task-card-info {
@@ -597,6 +672,9 @@
             font-size: 11px;
             color: var(--text-muted);
             font-family: monospace;
+            background: var(--glass-bg);
+            padding: 2px 8px;
+            border-radius: 10px;
         }
 
         .task-name {
@@ -623,6 +701,7 @@
         .task-detail a {
             color: var(--blue-light);
             text-decoration: none;
+            word-break: break-all;
         }
 
         .task-progress {
@@ -890,13 +969,14 @@
         }
 
         .topusers-grid {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 10px;
         }
 
         .topuser-item {
             display: grid;
-            grid-template-columns: 50px 1fr 120px;
+            grid-template-columns: 50px 1fr 100px 50px;
             gap: 10px;
             padding: 10px 14px;
             background: var(--bg-secondary);
@@ -908,10 +988,11 @@
 
         .topuser-item:hover {
             border-color: var(--blue);
+            transform: translateX(4px);
         }
 
         .topuser-item .rank {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--blue-light);
         }
 
@@ -919,6 +1000,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            min-width: 0;
         }
 
         .topuser-item .user-info img {
@@ -927,10 +1009,12 @@
             border-radius: 50%;
             object-fit: cover;
             border: 1px solid var(--blue);
+            flex-shrink: 0;
         }
 
         .topuser-item .user-info .name {
             font-weight: 500;
+            font-size: 13px;
         }
 
         .topuser-item .user-info .id {
@@ -942,11 +1026,13 @@
             text-align: right;
             font-weight: 600;
             color: var(--blue-light);
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
         }
 
         .topuser-header {
             display: grid;
-            grid-template-columns: 50px 1fr 120px;
+            grid-template-columns: 50px 1fr 100px 50px;
             gap: 10px;
             padding: 10px 14px;
             background: var(--glass-bg);
@@ -954,6 +1040,67 @@
             font-weight: 600;
             font-size: 12px;
             color: var(--text-secondary);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-state i {
+            font-size: 36px;
+            opacity: 0.3;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 24px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .modal-box h3 {
+            color: var(--blue-light);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .modal-box p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .modal-box-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .modal-box-actions .btn {
+            flex: 1;
+            justify-content: center;
         }
 
         @media (max-width: 600px) {
@@ -975,7 +1122,7 @@
             }
             .topuser-item,
             .topuser-header {
-                grid-template-columns: 30px 1fr 80px !important;
+                grid-template-columns: 30px 1fr 70px 40px !important;
                 font-size: 12px;
             }
         }
@@ -1031,7 +1178,7 @@
             <div class="panel-card">
                 <div class="card-title"><i class="fas fa-search"></i> Search User</div>
                 <div class="search-row">
-                    <input class="form-control" id="user-search-input" placeholder="Enter User ID or Username..." type="text">
+                    <input class="form-control" id="user-search-input" placeholder="Enter User ID, Username, First Name..." type="text">
                     <button class="btn btn-primary" id="user-search-btn"><i class="fas fa-search"></i> Search</button>
                 </div>
                 <div id="user-result"></div>
@@ -1042,7 +1189,8 @@
             <div class="panel-card">
                 <div class="card-title"><i class="fas fa-filter"></i> Filter Tasks</div>
                 <div class="search-row">
-                    <input class="form-control" id="task-search-owner" placeholder="Filter by Owner ID..." type="number">
+                    <input class="form-control" id="task-search-id" placeholder="Task ID...">
+                    <input class="form-control" id="task-search-owner" placeholder="Owner ID..." type="number">
                     <select class="form-control" id="task-search-status" style="width:auto;min-width:120px;">
                         <option value="">All Status</option>
                         <option value="active">Active</option>
@@ -1055,8 +1203,15 @@
                         <option value="main">Main</option>
                         <option value="partner">Partner</option>
                         <option value="social">Social</option>
+                        <option value="special">Special</option>
+                    </select>
+                    <select class="form-control" id="task-search-creator" style="width:auto;min-width:120px;">
+                        <option value="">All Creators</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
                     </select>
                     <button class="btn btn-primary" id="task-search-btn"><i class="fas fa-search"></i> Search</button>
+                    <button class="btn btn-outline" id="task-clear-btn"><i class="fas fa-times"></i> Clear</button>
                 </div>
             </div>
 
@@ -1070,12 +1225,13 @@
                             <option value="main">Main</option>
                             <option value="partner">Partner</option>
                             <option value="social">Social</option>
+                            <option value="special">Special (Unlimited)</option>
                         </select>
                     </div>
-                    <div class="form-group"><label>Reward Power</label><input class="form-control" id="task-create-reward" type="number" value="100"></div>
-                    <div class="form-group"><label>Max Completions</label><input class="form-control" id="task-create-max" type="number" value="100"></div>
+                    <div class="form-group"><label>Reward Power</label><input class="form-control" id="task-create-reward" type="number" value="50"></div>
+                    <div class="form-group" id="task-max-group"><label>Max Completions</label><input class="form-control" id="task-create-max" type="number" value="100"></div>
                     <div class="form-group"><label>Owner ID</label><input class="form-control" id="task-create-owner" type="number" placeholder="Admin = 0"></div>
-                    <div class="form-group"><label>DOGS Reward (Social only)</label><input class="form-control" id="task-create-dogs" type="number" value="1" placeholder="1 DOGS"></div>
+                    <div class="form-group" id="task-dogs-group"><label>DOGS Reward</label><input class="form-control" id="task-create-dogs" type="number" value="5"></div>
                     <div class="form-group"><label>Verification Required</label>
                         <select class="form-control" id="task-create-verification">
                             <option value="true">Yes</option>
@@ -1102,9 +1258,12 @@
                         <option value="failed">Failed</option>
                     </select>
                     <button class="btn btn-primary" id="withdrawal-search-btn"><i class="fas fa-search"></i> Search</button>
+                    <button class="btn btn-outline" id="withdrawal-clear-btn"><i class="fas fa-times"></i> Clear</button>
                 </div>
             </div>
-            <div id="withdrawals-container"></div>
+            <div id="withdrawals-container">
+                <div class="empty-state"><i class="fas fa-filter"></i><p>Choose a filter and click Search</p></div>
+            </div>
         </div>
 
         <div class="tab-content" id="tab-promo">
@@ -1137,8 +1296,30 @@
                     <div class="text-muted">Sending to channels...</div>
                     <div class="progress-bar"><div class="progress-fill" id="promo-progress-fill" style="width:0%"></div></div>
                     <div class="text-muted mt-8" id="promo-status-text"></div>
+                    <div id="promo-deleted-channels" style="margin-top:12px;"></div>
                 </div>
             </div>
+
+            <div class="panel-card">
+                <div class="card-title"><i class="fas fa-filter"></i> Filter Promo Codes</div>
+                <div class="search-row">
+                    <input class="form-control" id="promo-search-code" placeholder="Code...">
+                    <input class="form-control" id="promo-search-owner" placeholder="Owner ID..." type="number">
+                    <select class="form-control" id="promo-search-status" style="width:auto;min-width:120px;">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    <select class="form-control" id="promo-search-creator" style="width:auto;min-width:120px;">
+                        <option value="">All Creators</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                    <button class="btn btn-primary" id="promo-search-btn"><i class="fas fa-search"></i> Search</button>
+                    <button class="btn btn-outline" id="promo-clear-btn"><i class="fas fa-times"></i> Clear</button>
+                </div>
+            </div>
+
             <div id="promo-container"></div>
         </div>
 
@@ -1154,9 +1335,10 @@
                         <option value="rejected">Rejected</option>
                     </select>
                     <button class="btn btn-primary" id="promotion-search-btn"><i class="fas fa-search"></i> Search</button>
+                    <button class="btn btn-outline" id="promotion-clear-btn"><i class="fas fa-times"></i> Clear</button>
                 </div>
                 <div id="promotions-container" class="mt-8">
-                    <div class="text-muted">Loading promotions...</div>
+                    <div class="empty-state"><i class="fas fa-filter"></i><p>Choose a filter and click Search</p></div>
                 </div>
             </div>
         </div>
@@ -1233,9 +1415,35 @@
                     <button class="btn btn-primary" id="topusers-btn"><i class="fas fa-search"></i> Load</button>
                 </div>
                 <div id="topusers-container">
-                    <div class="text-muted">Click Load to view top users</div>
+                    <div class="empty-state"><i class="fas fa-chart-line"></i><p>Click Load to view top users</p></div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="confirm-modal">
+    <div class="modal-box">
+        <h3 id="confirm-title">Confirm Action</h3>
+        <p id="confirm-message"></p>
+        <div class="modal-box-actions">
+            <button class="btn btn-outline" onclick="closeConfirmModal()">Cancel</button>
+            <button class="btn btn-danger" id="confirm-action-btn">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="balance-modal">
+    <div class="modal-box">
+        <h3 id="balance-modal-title">Modify Balance</h3>
+        <p id="balance-modal-subtitle"></p>
+        <div class="form-group">
+            <label>Amount</label>
+            <input class="form-control" id="balance-amount" type="number" placeholder="Enter amount" step="0.00001">
+        </div>
+        <div class="modal-box-actions">
+            <button class="btn btn-outline" onclick="closeBalanceModal()">Cancel</button>
+            <button class="btn btn-primary" id="balance-confirm-btn">Confirm</button>
         </div>
     </div>
 </div>
@@ -1250,27 +1458,47 @@ let notifButtons = [];
 let loginAttempts = 0;
 let isLocked = false;
 let allPromotions = [];
+let confirmCallback = null;
+let balanceModalData = null;
 
 document.addEventListener('DOMContentLoaded', function() {
     var tabs = document.querySelectorAll('.tab');
     var contents = document.querySelectorAll('.tab-content');
     
     tabs.forEach(function(tab) {
-        tab.addEventListener('click', function(e) {
+        tab.addEventListener('click', function() {
             tabs.forEach(function(t) { t.classList.remove('active'); });
             contents.forEach(function(c) { c.classList.remove('active'); });
             this.classList.add('active');
             var tabId = this.getAttribute('data-tab');
             var content = document.getElementById('tab-' + tabId);
             if (content) content.classList.add('active');
-            if (tabId === 'users') loadUsers();
-            if (tabId === 'tasks') loadTasks();
-            if (tabId === 'withdrawals') loadWithdrawals();
-            if (tabId === 'promo') loadPromoCodes();
-            if (tabId === 'promotions') loadPromotions();
-            if (tabId === 'topusers') loadTopUsers();
         });
     });
+
+    const catSelect = document.getElementById('task-create-category');
+    if (catSelect) {
+        catSelect.addEventListener('change', function() {
+            const cat = this.value;
+            document.getElementById('task-max-group').style.display = (cat === 'special') ? 'none' : 'block';
+            document.getElementById('task-dogs-group').style.display = (cat === 'special' || cat === 'social') ? 'block' : 'none';
+            
+            const rewardInput = document.getElementById('task-create-reward');
+            const dogsInput = document.getElementById('task-create-dogs');
+            
+            if (cat === 'special') {
+                rewardInput.value = 50;
+                dogsInput.value = 10;
+            } else if (cat === 'social') {
+                rewardInput.value = 10;
+                dogsInput.value = 2;
+            } else {
+                rewardInput.value = 100;
+                dogsInput.value = 0;
+            }
+        });
+        catSelect.dispatchEvent(new Event('change'));
+    }
 });
 
 function insertTag(tag) {
@@ -1338,7 +1566,7 @@ function toast(message, type) {
     setTimeout(function() {
         el.style.opacity = '0';
         setTimeout(function() { el.remove(); }, 300);
-    }, 3500);
+    }, 4000);
 }
 
 async function apiCall(endpoint, data) {
@@ -1351,48 +1579,82 @@ async function apiCall(endpoint, data) {
         });
         var result = await response.json();
         if (!result.success) {
-            toast(result.error || 'Request failed', 'error');
-            return null;
+            console.error('❌ [' + endpoint + ']', result.error);
+            return result;
         }
         return result;
     } catch (e) {
-        toast('Network error: ' + e.message, 'error');
-        return null;
+        console.error('❌ [' + endpoint + '] Network:', e.message);
+        return { success: false, error: 'Network error: ' + e.message };
     }
 }
 
 function initApp() {
     loadStats();
     loadUsers();
-    loadTasks();
-    loadWithdrawals();
-    loadPromoCodes();
-    loadPromotions();
     setupEventListeners();
 }
 
 function setupEventListeners() {
     document.getElementById('user-search-btn').addEventListener('click', loadUsers);
+    document.getElementById('user-search-input').addEventListener('keypress', function(e) { if (e.key === 'Enter') loadUsers(); });
+    
     document.getElementById('task-search-btn').addEventListener('click', loadTasks);
+    document.getElementById('task-clear-btn').addEventListener('click', clearTaskFilters);
+    document.getElementById('task-create-btn').addEventListener('click', createTask);
+    
     document.getElementById('withdrawal-search-btn').addEventListener('click', loadWithdrawals);
+    document.getElementById('withdrawal-clear-btn').addEventListener('click', clearWithdrawalFilters);
+    
     document.getElementById('promo-generate-btn').addEventListener('click', generatePromo);
     document.getElementById('promo-create-btn').addEventListener('click', createPromo);
+    document.getElementById('promo-search-btn').addEventListener('click', loadPromoCodes);
+    document.getElementById('promo-clear-btn').addEventListener('click', clearPromoFilters);
+    
+    document.getElementById('promotion-search-btn').addEventListener('click', loadPromotions);
+    document.getElementById('promotion-clear-btn').addEventListener('click', clearPromotionFilters);
+    document.getElementById('promotion-search-input').addEventListener('keypress', function(e) { if (e.key === 'Enter') loadPromotions(); });
+    
     document.getElementById('notif-target').addEventListener('change', toggleNotifUser);
     document.getElementById('notif-add-btn').addEventListener('click', addNotifButton);
     document.getElementById('notif-send-btn').addEventListener('click', sendNotification);
     document.getElementById('notif-message').addEventListener('input', updatePreview);
     document.getElementById('notif-preview-btn').addEventListener('click', updatePreview);
-    document.getElementById('task-create-btn').addEventListener('click', createTask);
+    
     document.getElementById('topusers-btn').addEventListener('click', loadTopUsers);
-    document.getElementById('promotion-search-btn').addEventListener('click', loadPromotions);
-    document.getElementById('promotion-search-input').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') loadPromotions();
-    });
+    
+    document.getElementById('balance-confirm-btn').addEventListener('click', confirmBalance);
+    document.getElementById('confirm-action-btn').addEventListener('click', executeConfirm);
+}
+
+function formatNumber(num) {
+    num = parseFloat(num) || 0;
+    if (num >= 1000000) return (num / 1000000).toFixed(3) + 'M';
+    if (num >= 1000) return (num / 1000).toFixed(3) + 'K';
+    return num.toFixed(num % 1 === 0 ? 0 : 3);
+}
+
+function formatDate(ts) {
+    if (!ts) return 'N/A';
+    const d = new Date(ts);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    let hours = d.getHours();
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+    return day + '.' + month + '.' + year + ' ' + String(hours).padStart(2, '0') + ':' + minutes + ' ' + ampm;
+}
+
+function truncate(str, len) {
+    if (!str) return 'User';
+    return str.length > len ? str.substring(0, len) + '…' : str;
 }
 
 async function loadStats() {
     var result = await apiCall('/admin/stats');
-    if (result) {
+    if (result && result.success) {
         document.getElementById('stat-users').textContent = result.data.totalUsers || 0;
         document.getElementById('stat-withdrawals').textContent = result.data.totalWithdrawals || 0;
         document.getElementById('stat-tasks').textContent = result.data.totalTasks || 0;
@@ -1402,65 +1664,178 @@ async function loadStats() {
 
 async function loadUsers() {
     var query = document.getElementById('user-search-input').value.trim();
-    if (!query) { toast('Enter user ID or username', 'warning'); return; }
-    var isNumber = !isNaN(query);
-    var result = await apiCall('/admin/users/search', { userId: isNumber ? parseInt(query) : query });
+    if (!query) { toast('Enter search query', 'warning'); return; }
     var container = document.getElementById('user-result');
-    if (result && result.data) {
-        var u = result.data;
-        var status = u.state === 'ban' ? 'Banned' : 'Active';
-        var statusClass = u.state === 'ban' ? 'badge-rejected' : 'badge-active';
-        container.innerHTML = '<div class="user-card"><div class="user-card-header"><span class="user-id">#' + u.id + '</span><span class="badge ' + statusClass + '">' + status + '</span></div><div class="user-card-grid"><div class="user-card-item"><span class="label">DOGS</span><span class="value">' + (u.dogs_balance || '0') + '</span></div><div class="user-card-item"><span class="label">Power</span><span class="value">' + (u.power_balance || '0') + '</span></div><div class="user-card-item"><span class="label">Level</span><span class="value">' + (u.level || '1') + '</span></div><div class="user-card-item"><span class="label">Referrals</span><span class="value">' + (u.total_referrals || '0') + '</span></div></div><div class="user-card-actions">' + (u.state === 'active' ? '<button class="btn btn-danger btn-sm" onclick="banUser(' + u.id + ')"><i class="fas fa-ban"></i> Ban</button>' : '') + (u.state === 'ban' ? '<button class="btn btn-success btn-sm" onclick="unbanUser(' + u.id + ')"><i class="fas fa-check"></i> Unban</button>' : '') + '<button class="btn btn-warning btn-sm" onclick="editBalance(' + u.id + ')"><i class="fas fa-edit"></i> Edit Balance</button></div></div>';
+    container.innerHTML = '<div class="text-muted">Loading...</div>';
+    
+    var result = await apiCall('/admin/users/search', { query: query });
+    if (result && result.success && result.data && result.data.length > 0) {
+        container.innerHTML = result.data.map(function(u) { return renderUserCard(u); }).join('');
     } else {
-        container.innerHTML = '<div class="text-muted mt-8">User not found</div>';
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-user-slash"></i><p>User not found</p></div>';
     }
 }
 
-async function editBalance(userId) {
-    var type = prompt('Select balance type:\n1. DOGS\n2. Power', '1');
-    if (!type) return;
+function renderUserCard(u) {
+    var status = u.state === 'ban' ? 'Banned' : 'Active';
+    var statusClass = u.state === 'ban' ? 'badge-rejected' : 'badge-active';
+    var nameEscaped = (u.first_name || 'User').replace(/'/g, '');
     
-    var balanceType = type === '1' ? 'dogs_balance' : 'power_balance';
-    var action = prompt('Select action:\n1. Add\n2. Deduct', '1');
-    if (!action) return;
+    return '<div class="user-card">' +
+        '<div class="user-card-header">' +
+            '<div class="user-card-main">' +
+                '<img src="' + (u.photo_url || DOGS_ICON) + '" class="user-card-avatar" onerror="this.src=\'' + DOGS_ICON + '\'">' +
+                '<div>' +
+                    '<div class="user-card-name">' + (u.first_name || 'User') + '</div>' +
+                    '<div class="user-card-id">ID: ' + u.id + (u.username ? ' · @' + u.username : '') + '</div>' +
+                '</div>' +
+            '</div>' +
+            '<span class="badge ' + statusClass + '">' + status + '</span>' +
+        '</div>' +
+        '<div class="user-card-grid">' +
+            '<div class="user-card-item"><span class="label">DOGS</span><span class="value">' + formatNumber(u.dogs_balance || 0) + '</span></div>' +
+            '<div class="user-card-item"><span class="label">Power</span><span class="value">' + formatNumber(u.power_balance || 0) + '</span></div>' +
+            '<div class="user-card-item"><span class="label">Level</span><span class="value">' + (u.level || 1) + '</span></div>' +
+            '<div class="user-card-item"><span class="label">Referrals</span><span class="value">' + (u.total_referrals || 0) + '</span></div>' +
+            '<div class="user-card-item"><span class="label">Tasks Done</span><span class="value">' + (u.total_tasks_completed || 0) + '</span></div>' +
+            '<div class="user-card-item"><span class="label">Promo Codes</span><span class="value">' + (u.promo_codes_created || 0) + '</span></div>' +
+            '<div class="user-card-item"><span class="label">Special Tasks</span><span class="value">' + (u.special_tasks_count || 0) + '</span></div>' +
+            '<div class="user-card-item"><span class="label">GRAM</span><span class="value">' + formatNumber(u.gram_balance || 0) + '</span></div>' +
+        '</div>' +
+        '<div class="user-card-actions">' +
+            '<button class="user-action-btn action-add-dogs" onclick="openBalanceModal(' + u.id + ', \'dogs_balance\', \'add\', \'' + nameEscaped + '\')"><i class="fas fa-plus-circle"></i> Add DOGS</button>' +
+            '<button class="user-action-btn action-deduct-dogs" onclick="openBalanceModal(' + u.id + ', \'dogs_balance\', \'deduct\', \'' + nameEscaped + '\')"><i class="fas fa-minus-circle"></i> Deduct DOGS</button>' +
+            '<button class="user-action-btn action-add-power" onclick="openBalanceModal(' + u.id + ', \'power_balance\', \'add\', \'' + nameEscaped + '\')"><i class="fas fa-bolt"></i> Add Power</button>' +
+            '<button class="user-action-btn action-deduct-power" onclick="openBalanceModal(' + u.id + ', \'power_balance\', \'deduct\', \'' + nameEscaped + '\')"><i class="fas fa-bolt"></i> Deduct Power</button>' +
+            (u.state === 'active' ?
+                '<button class="user-action-btn action-ban" onclick="banUser(' + u.id + ')"><i class="fas fa-ban"></i> Ban User</button>' :
+                '<button class="user-action-btn action-unban" onclick="unbanUser(' + u.id + ')"><i class="fas fa-check"></i> Unban User</button>') +
+            '<button class="user-action-btn action-delete" onclick="deleteUser(' + u.id + ')"><i class="fas fa-trash"></i> Delete User</button>' +
+        '</div>' +
+    '</div>';
+}
+
+function openBalanceModal(userId, type, action, userName) {
+    balanceModalData = { userId: userId, type: type, action: action };
+    var typeLabel = type === 'dogs_balance' ? 'DOGS' : 'Power';
+    var actionLabel = action === 'add' ? 'Add' : 'Deduct';
+    document.getElementById('balance-modal-title').textContent = actionLabel + ' ' + typeLabel;
+    document.getElementById('balance-modal-subtitle').textContent = actionLabel + ' ' + typeLabel + ' for ' + userName + ' (ID: ' + userId + ')';
+    document.getElementById('balance-amount').value = '';
+    document.getElementById('balance-modal').classList.add('active');
+    setTimeout(function() { document.getElementById('balance-amount').focus(); }, 100);
+}
+
+function closeBalanceModal() {
+    document.getElementById('balance-modal').classList.remove('active');
+    balanceModalData = null;
+}
+
+async function confirmBalance() {
+    if (!balanceModalData) return;
+    var amount = parseFloat(document.getElementById('balance-amount').value);
+    if (!amount || amount <= 0) {
+        toast('Enter a valid amount', 'warning');
+        return;
+    }
+    var endpoint = balanceModalData.action === 'add' ? '/admin/balance/add' : '/admin/balance/deduct';
+    var btn = document.getElementById('balance-confirm-btn');
+    btn.disabled = true;
+    btn.textContent = 'Processing...';
     
-    var amount = prompt('Enter amount:', '');
-    if (!amount) return;
-    amount = parseFloat(amount);
-    if (isNaN(amount) || amount <= 0) { toast('Invalid amount', 'error'); return; }
+    var result = await apiCall(endpoint, { userId: balanceModalData.userId, amount: amount, type: balanceModalData.type });
     
-    var endpoint = action === '1' ? '/admin/balance/add' : '/admin/balance/deduct';
-    var result = await apiCall(endpoint, { userId: userId, amount: amount, type: balanceType });
-    if (result) {
-        toast('Balance updated!', 'success');
+    btn.disabled = false;
+    btn.textContent = 'Confirm';
+    
+    if (result && result.success) {
+        toast(balanceModalData.action === 'add' ? 'Balance added!' : 'Balance deducted!', 'success');
+        closeBalanceModal();
         loadUsers();
+    } else if (result) {
+        toast(result.error || 'Failed', 'error');
     }
 }
 
-async function banUser(userId) {
-    if (!confirm('Ban user ' + userId + '?')) return;
-    var result = await apiCall('/admin/users/ban', { userId: userId });
-    if (result) { toast('User banned', 'success'); loadUsers(); }
+function showConfirm(title, message, callback, danger) {
+    if (danger === undefined) danger = true;
+    document.getElementById('confirm-title').textContent = title;
+    document.getElementById('confirm-message').textContent = message;
+    confirmCallback = callback;
+    var btn = document.getElementById('confirm-action-btn');
+    btn.className = danger ? 'btn btn-danger' : 'btn btn-primary';
+    document.getElementById('confirm-modal').classList.add('active');
 }
 
-async function unbanUser(userId) {
-    if (!confirm('Unban user ' + userId + '?')) return;
-    var result = await apiCall('/admin/users/unban', { userId: userId });
-    if (result) { toast('User unbanned', 'success'); loadUsers(); }
+function closeConfirmModal() {
+    document.getElementById('confirm-modal').classList.remove('active');
+    confirmCallback = null;
+}
+
+async function executeConfirm() {
+    if (confirmCallback) {
+        var btn = document.getElementById('confirm-action-btn');
+        btn.disabled = true;
+        btn.textContent = 'Processing...';
+        await confirmCallback();
+        btn.disabled = false;
+        btn.textContent = 'Confirm';
+    }
+    closeConfirmModal();
+}
+
+function banUser(userId) {
+    showConfirm('Ban User', 'Are you sure you want to ban user ' + userId + '?', async function() {
+        var result = await apiCall('/admin/users/ban', { userId: userId });
+        if (result && result.success) { toast('User banned', 'success'); loadUsers(); }
+        else if (result) toast(result.error || 'Failed', 'error');
+    });
+}
+
+function unbanUser(userId) {
+    showConfirm('Unban User', 'Are you sure you want to unban user ' + userId + '?', async function() {
+        var result = await apiCall('/admin/users/unban', { userId: userId });
+        if (result && result.success) { toast('User unbanned', 'success'); loadUsers(); }
+        else if (result) toast(result.error || 'Failed', 'error');
+    }, false);
+}
+
+function deleteUser(userId) {
+    showConfirm('Delete User', 'PERMANENTLY delete user ' + userId + ' and ALL their data? This cannot be undone!', async function() {
+        var result = await apiCall('/admin/users/delete', { userId: userId });
+        if (result && result.success) {
+            toast('User deleted permanently', 'success');
+            var searchVal = document.getElementById('user-search-input').value.trim();
+            if (searchVal) loadUsers();
+        } else if (result) toast(result.error || 'Failed', 'error');
+    });
+}
+
+function clearTaskFilters() {
+    document.getElementById('task-search-id').value = '';
+    document.getElementById('task-search-owner').value = '';
+    document.getElementById('task-search-status').value = '';
+    document.getElementById('task-search-category').value = '';
+    document.getElementById('task-search-creator').value = '';
+    document.getElementById('tasks-container').innerHTML = '';
 }
 
 async function createTask() {
     var name = document.getElementById('task-create-name').value.trim();
     var url = document.getElementById('task-create-url').value.trim();
     var category = document.getElementById('task-create-category').value;
-    var reward = parseInt(document.getElementById('task-create-reward').value) || 100;
-    var maxCompletions = parseInt(document.getElementById('task-create-max').value) || 100;
+    var reward = parseInt(document.getElementById('task-create-reward').value) || 10;
+    var maxCompletions = category === 'special' ? 999999 : parseInt(document.getElementById('task-create-max').value) || 100;
     var owner = parseInt(document.getElementById('task-create-owner').value) || 0;
-    var dogsReward = parseInt(document.getElementById('task-create-dogs').value) || 1;
+    var dogsReward = parseInt(document.getElementById('task-create-dogs').value) || 0;
     var verification = document.getElementById('task-create-verification').value === 'true';
 
-    if (!name) { toast('Enter task name', 'warning'); return; }
-    if (!url) { toast('Enter task URL', 'warning'); return; }
+    if (!name || name.length < 5) { toast('Enter a valid name (5+ chars)', 'warning'); return; }
+    if (!url || !url.startsWith('https://')) { toast('Enter a valid URL (https://)', 'warning'); return; }
+
+    var btn = document.getElementById('task-create-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Creating...';
 
     var result = await apiCall('/admin/tasks/create', {
         name: name,
@@ -1473,97 +1848,167 @@ async function createTask() {
         verification: verification
     });
 
-    if (result) {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-plus"></i> Create Task';
+
+    if (result && result.success) {
         toast('Task created!', 'success');
         document.getElementById('task-create-name').value = '';
         document.getElementById('task-create-url').value = '';
-        loadTasks();
+        if (document.getElementById('task-search-btn').click) {
+            document.getElementById('task-search-btn').click();
+        }
+    } else if (result) {
+        toast(result.error || 'Failed to create task', 'error');
     }
 }
 
 async function loadTasks() {
+    var taskId = document.getElementById('task-search-id').value.trim();
     var owner = document.getElementById('task-search-owner').value;
     var status = document.getElementById('task-search-status').value;
     var category = document.getElementById('task-search-category').value;
-    var result = await apiCall('/admin/tasks/list', { owner: owner ? parseInt(owner) : null, status: status || null, category: category || null });
+    var creator = document.getElementById('task-search-creator').value;
+
     var container = document.getElementById('tasks-container');
-    container.innerHTML = '';
-    if (result && result.data && result.data.length > 0) {
-        result.data.forEach(function(t) {
-            var statusClass = t.status === 'active' ? 'badge-active' : t.status === 'pending' ? 'badge-pending' : t.status === 'completed' ? 'badge-completed' : 'badge-rejected';
-            var progress = t.total > 0 ? (t.total_completed / t.total * 100) : 0;
-            var isAdminTask = t.owner === 0 || t.owner === null;
-            var categoryIcon = t.category === 'social' ? '<i class="fas fa-users"></i>' : t.category === 'partner' ? '<i class="fas fa-handshake"></i>' : '<i class="fas fa-home"></i>';
-            container.innerHTML += '<div class="task-card"><div class="task-card-header"><div class="task-card-info"><span class="task-id">#' + t.id + '</span><span class="task-name">' + t.name + '</span>' + (isAdminTask ? '<span class="badge badge-blue">Admin</span>' : '') + '<span class="badge" style="background:rgba(59,130,246,0.08);color:var(--blue-light);">' + categoryIcon + ' ' + (t.category || 'main') + '</span></div><span class="badge ' + statusClass + '">' + t.status + '</span></div><div class="task-card-body"><div class="task-detail"><span class="label">Owner:</span> ' + (t.owner || 'Admin') + '</div><div class="task-detail"><span class="label">URL:</span> <a href="' + t.url + '" target="_blank">' + t.url + '</a></div><div class="task-detail"><span class="label">Reward:</span> ' + (t.reward || '0') + ' Power' + (t.dogs_reward ? ' + ' + t.dogs_reward + ' DOGS' : '') + '</div><div class="task-progress"><div class="task-progress-bar"><div class="task-progress-fill" style="width:' + Math.min(progress, 100) + '%"></div></div><span class="task-progress-text">' + t.total_completed + '/' + t.total + '</span></div></div><div class="task-card-actions">' + (t.status === 'pending' ? '<button class="btn btn-success btn-sm" onclick="updateTask(\'' + t.id + '\',\'active\')"><i class="fas fa-check"></i> Approve</button>' : '') + (t.status === 'pending' ? '<button class="btn btn-danger btn-sm" onclick="updateTask(\'' + t.id + '\',\'rejected\')"><i class="fas fa-times"></i> Reject</button>' : '') + '<button class="btn btn-warning btn-sm" onclick="editTask(\'' + t.id + '\')"><i class="fas fa-edit"></i> Edit</button><button class="btn btn-danger btn-sm" onclick="deleteTask(\'' + t.id + '\')"><i class="fas fa-trash"></i> Delete</button></div></div>';
-        });
-    } else {
-        container.innerHTML = '<div class="text-muted">No tasks found</div>';
+    container.innerHTML = '<div class="text-muted">Loading...</div>';
+
+    var result = await apiCall('/admin/tasks/list', {
+        taskId: taskId || null,
+        owner: owner ? parseInt(owner) : null,
+        status: status || null,
+        category: category || null,
+        creator: creator || null
+    });
+
+    if (!result || !result.success || !result.data || result.data.length === 0) {
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-tasks"></i><p>No tasks found</p></div>';
+        return;
     }
+
+    container.innerHTML = result.data.map(function(t) { return renderTaskCard(t); }).join('');
 }
 
-async function editTask(taskId) {
-    var name = prompt('Task Name:');
-    if (name === null) return;
-    var url = prompt('Task URL:');
-    if (url === null) return;
-    var reward = prompt('Reward Power:', '100');
-    if (reward === null) return;
-    
-    var result = await apiCall('/admin/tasks/update', { 
-        taskId: taskId, 
-        name: name, 
-        url: url, 
-        reward: parseInt(reward) 
-    });
-    if (result) { toast('Task updated!', 'success'); loadTasks(); }
+function renderTaskCard(t) {
+    var statusClass = t.status === 'active' ? 'badge-active' : t.status === 'pending' ? 'badge-pending' : t.status === 'completed' ? 'badge-completed' : 'badge-rejected';
+    var isUnlimited = t.category === 'special';
+    var progress = !isUnlimited && t.total > 0 ? (t.total_completed / t.total * 100) : 0;
+    var isAdminTask = t.owner === 0 || t.owner === null || t.owner === undefined;
+    var catIcon = t.category === 'social' ? 'fa-users' : t.category === 'partner' ? 'fa-handshake' : t.category === 'special' ? 'fa-star' : 'fa-home';
+    var cardClass = t.category === 'special' ? 'task-card task-special' : 'task-card';
+
+    return '<div class="' + cardClass + '">' +
+        '<div class="task-card-header">' +
+            '<div class="task-card-info">' +
+                '<span class="task-id">#' + t.id + '</span>' +
+                '<span class="task-name">' + t.name + '</span>' +
+                '<span class="badge badge-blue"><i class="fas ' + catIcon + '"></i> ' + (t.category || 'main') + '</span>' +
+                (isAdminTask ? '<span class="badge badge-admin">Admin</span>' : '<span class="badge badge-user">User</span>') +
+                (isUnlimited ? '<span class="badge badge-special">Unlimited</span>' : '') +
+            '</div>' +
+            '<span class="badge ' + statusClass + '">' + t.status + '</span>' +
+        '</div>' +
+        '<div class="task-card-body">' +
+            '<div class="task-detail"><span class="label">Owner:</span> ' + (isAdminTask ? 'Admin' : (t.owner || 'N/A')) + '</div>' +
+            '<div class="task-detail"><span class="label">URL:</span> <a href="' + t.url + '" target="_blank">' + t.url + '</a></div>' +
+            '<div class="task-detail"><span class="label">Reward:</span> ' + (t.reward || 0) + ' Power' + (t.dogs_reward ? ' + ' + t.dogs_reward + ' DOGS' : '') + '</div>' +
+            (!isUnlimited ?
+                '<div class="task-progress"><div class="task-progress-bar"><div class="task-progress-fill" style="width:' + Math.min(progress, 100) + '%"></div></div><span class="task-progress-text">' + (t.total_completed || 0) + '/' + t.total + '</span></div>' :
+                '<div class="task-detail"><span class="label">Total Completed:</span> ' + (t.total_completed || 0) + '</div>') +
+        '</div>' +
+        '<div class="task-card-actions">' +
+            (t.status === 'pending' ? '<button class="btn btn-success btn-sm" onclick="updateTask(\'' + t.id + '\',\'active\')"><i class="fas fa-check"></i> Approve</button>' : '') +
+            (t.status === 'pending' ? '<button class="btn btn-danger btn-sm" onclick="updateTask(\'' + t.id + '\',\'rejected\')"><i class="fas fa-times"></i> Reject</button>' : '') +
+            '<button class="btn btn-danger btn-sm" onclick="deleteTask(\'' + t.id + '\')"><i class="fas fa-trash"></i> Delete</button>' +
+        '</div>' +
+    '</div>';
 }
 
 async function updateTask(taskId, status) {
     var result = await apiCall('/admin/tasks/update-status', { taskId: taskId, status: status });
-    if (result) { toast('Task ' + status, 'success'); loadTasks(); }
+    if (result && result.success) { toast('Task ' + status, 'success'); loadTasks(); }
+    else if (result) toast(result.error || 'Failed', 'error');
 }
 
-async function deleteTask(taskId) {
-    if (!confirm('Delete task ' + taskId + '?')) return;
-    var result = await apiCall('/admin/tasks/delete', { taskId: taskId });
-    if (result) { toast('Task deleted', 'success'); loadTasks(); }
+function deleteTask(taskId) {
+    showConfirm('Delete Task', 'Delete task ' + taskId + '?', async function() {
+        var result = await apiCall('/admin/tasks/delete', { taskId: taskId });
+        if (result && result.success) { toast('Task deleted', 'success'); loadTasks(); }
+        else if (result) toast(result.error || 'Failed', 'error');
+    });
+}
+
+function clearWithdrawalFilters() {
+    document.getElementById('withdrawal-search-user').value = '';
+    document.getElementById('withdrawal-search-status').value = '';
+    document.getElementById('withdrawals-container').innerHTML = '<div class="empty-state"><i class="fas fa-filter"></i><p>Choose a filter and click Search</p></div>';
 }
 
 async function loadWithdrawals() {
     var userId = document.getElementById('withdrawal-search-user').value;
     var status = document.getElementById('withdrawal-search-status').value;
-    var result = await apiCall('/admin/withdrawals/list', { userId: userId ? parseInt(userId) : null, status: status || null });
-    var container = document.getElementById('withdrawals-container');
-    container.innerHTML = '';
-    if (result && result.data && result.data.length > 0) {
-        result.data.forEach(function(w) {
-            var statusClass = w.status === 'completed' ? 'badge-completed' : w.status === 'pending' ? 'badge-pending' : 'badge-rejected';
-            var date = new Date(w.timestamp);
-            var dateStr = String(date.getDate()).padStart(2,'0') + '/' + String(date.getMonth()+1).padStart(2,'0') + '/' + date.getFullYear() + ' ' + String(date.getHours()).padStart(2,'0') + ':' + String(date.getMinutes()).padStart(2,'0') + ' ' + (date.getHours() >= 12 ? 'PM' : 'AM');
-            var dogsAmount = w.dogs_amount || Math.abs(w.amount || 0);
-            container.innerHTML += '<div class="withdrawal-card ' + w.status + '"><div class="withdrawal-card-header"><span class="withdrawal-id">#' + w.id + '</span><span class="withdrawal-user">User: ' + w.user_id + '</span><span class="badge ' + statusClass + '">' + w.status + '</span></div><div class="withdrawal-card-body"><div class="withdrawal-amount">' + Math.abs(dogsAmount) + ' DOGS</div><div class="withdrawal-date">' + dateStr + '</div></div><div class="withdrawal-card-actions">' + (w.status === 'pending' ? '<button class="btn btn-success btn-sm" onclick="updateWithdrawal(\'' + w.id + '\',\'completed\')"><i class="fas fa-check"></i> Approve</button>' : '') + (w.status === 'pending' ? '<button class="btn btn-danger btn-sm" onclick="updateWithdrawal(\'' + w.id + '\',\'rejected\')"><i class="fas fa-times"></i> Reject</button>' : '') + '<button class="btn btn-danger btn-sm" onclick="deleteWithdrawal(\'' + w.id + '\')"><i class="fas fa-trash"></i> Delete</button></div></div>';
-        });
-    } else {
-        container.innerHTML = '<div class="text-muted">No withdrawals found</div>';
+
+    if (!userId && !status) {
+        document.getElementById('withdrawals-container').innerHTML = '<div class="empty-state"><i class="fas fa-filter"></i><p>Choose a filter and click Search</p></div>';
+        return;
     }
+
+    var container = document.getElementById('withdrawals-container');
+    container.innerHTML = '<div class="text-muted">Loading...</div>';
+
+    var result = await apiCall('/admin/withdrawals/list', {
+        userId: userId ? parseInt(userId) : null,
+        status: status || null
+    });
+
+    if (!result || !result.success || !result.data || result.data.length === 0) {
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>No withdrawals found</p></div>';
+        return;
+    }
+
+    container.innerHTML = result.data.map(function(w) {
+        var statusClass = w.status === 'completed' ? 'badge-completed' : w.status === 'pending' ? 'badge-pending' : 'badge-rejected';
+        var dateStr = formatDate(w.timestamp);
+        var dogsAmount = Math.abs(w.dogs_amount || w.amount || 0);
+        return '<div class="withdrawal-card ' + w.status + '">' +
+            '<div class="withdrawal-card-header">' +
+                '<span class="withdrawal-id">#' + w.id + '</span>' +
+                '<span class="withdrawal-user">User: ' + w.user_id + '</span>' +
+                '<span class="badge ' + statusClass + '">' + w.status + '</span>' +
+            '</div>' +
+            '<div class="withdrawal-card-body">' +
+                '<div class="withdrawal-amount">' + formatNumber(dogsAmount) + ' DOGS</div>' +
+                '<div class="withdrawal-date">' + dateStr + '</div>' +
+            '</div>' +
+            '<div class="withdrawal-card-actions">' +
+                (w.status === 'pending' ? '<button class="btn btn-success btn-sm" onclick="updateWithdrawal(\'' + w.id + '\',\'completed\')"><i class="fas fa-check"></i> Approve</button>' : '') +
+                (w.status === 'pending' ? '<button class="btn btn-danger btn-sm" onclick="updateWithdrawal(\'' + w.id + '\',\'rejected\')"><i class="fas fa-times"></i> Reject</button>' : '') +
+                '<button class="btn btn-danger btn-sm" onclick="deleteWithdrawal(\'' + w.id + '\')"><i class="fas fa-trash"></i> Delete</button>' +
+            '</div>' +
+        '</div>';
+    }).join('');
 }
 
-async function updateWithdrawal(transactionId, status) {
-    if (!confirm('Update withdrawal ' + transactionId + ' to ' + status + '?')) return;
-    var result = await apiCall('/admin/withdrawals/update-status', { transactionId: transactionId, status: status });
-    if (result) { toast('Withdrawal ' + status, 'success'); loadWithdrawals(); }
+function updateWithdrawal(transactionId, status) {
+    showConfirm('Update Withdrawal', 'Update withdrawal ' + transactionId + ' to ' + status + '?', async function() {
+        var result = await apiCall('/admin/withdrawals/update-status', { transactionId: transactionId, status: status });
+        if (result && result.success) { toast('Withdrawal ' + status, 'success'); loadWithdrawals(); }
+        else if (result) toast(result.error || 'Failed', 'error');
+    }, status === 'completed');
 }
 
-async function deleteWithdrawal(transactionId) {
-    if (!confirm('Delete withdrawal ' + transactionId + '?')) return;
-    var result = await apiCall('/admin/withdrawals/delete', { transactionId: transactionId });
-    if (result) { toast('Withdrawal deleted', 'success'); loadWithdrawals(); }
+function deleteWithdrawal(transactionId) {
+    showConfirm('Delete Withdrawal', 'Delete withdrawal ' + transactionId + '?', async function() {
+        var result = await apiCall('/admin/withdrawals/delete', { transactionId: transactionId });
+        if (result && result.success) { toast('Withdrawal deleted', 'success'); loadWithdrawals(); }
+        else if (result) toast(result.error || 'Failed', 'error');
+    });
 }
 
 function generatePromo() {
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    var code = '';
-    for (var i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
+    var code = 'PTS-';
+    for (var i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
     document.getElementById('promo-code').value = code;
 }
 
@@ -1573,52 +2018,119 @@ async function createPromo() {
     var rewardType = document.getElementById('promo-type').value;
     var maxUses = parseInt(document.getElementById('promo-max-uses').value) || 999999;
     var notifyChannels = document.getElementById('promo-notify-channels').value === 'yes';
-    
+
     if (!code) { toast('Enter promo code', 'warning'); return; }
-    
+
     var progressDiv = document.getElementById('promo-progress');
     var progressFill = document.getElementById('promo-progress-fill');
     var statusText = document.getElementById('promo-status-text');
+    var deletedChannelsDiv = document.getElementById('promo-deleted-channels');
+
+    var btn = document.getElementById('promo-create-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Creating...';
+
     progressDiv.style.display = 'block';
-    progressFill.style.width = '0%';
+    progressFill.style.width = '30%';
     statusText.textContent = 'Creating promo code...';
-    
-    var result = await apiCall('/admin/promo/create', { 
-        code: code, 
-        reward: reward, 
-        rewardType: rewardType, 
+    deletedChannelsDiv.innerHTML = '';
+
+    var result = await apiCall('/admin/promo/create', {
+        code: code,
+        reward: reward,
+        rewardType: rewardType,
         maxUses: maxUses,
         notifyChannels: notifyChannels
     });
-    
-    if (result) {
+
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-plus"></i> Create Promo';
+
+    if (result && result.success) {
         toast('Promo created!', 'success');
         document.getElementById('promo-code').value = '';
-        loadPromoCodes();
-        
-        if (notifyChannels && result.channels) {
-            progressFill.style.width = '100%';
-            statusText.textContent = '✅ Sent: ' + result.sent + ' | Failed: ' + result.failed + ' | Total: ' + result.total;
-            setTimeout(function() { progressDiv.style.display = 'none'; }, 5000);
+        progressFill.style.width = '100%';
+
+        if (notifyChannels && result.total !== undefined) {
+            statusText.textContent = '✅ Sent: ' + (result.sent || 0) + ' | Failed: ' + (result.failed || 0) + ' | Total: ' + (result.total || 0) + ' | Deleted: ' + (result.deleted || 0);
+
+            if (result.deletedChannels && result.deletedChannels.length > 0) {
+                var deletedHtml = '<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:12px;margin-top:8px;">';
+                deletedHtml += '<div style="color:#EF4444;font-weight:700;font-size:12px;margin-bottom:8px;"><i class="fas fa-trash"></i> Deleted Channels (' + result.deletedChannels.length + ')</div>';
+                result.deletedChannels.forEach(function(dc) {
+                    deletedHtml += '<div style="font-size:11px;color:#aaa;padding:6px 0;border-bottom:1px solid rgba(239,68,68,0.1);">';
+                    deletedHtml += '<div><b>User:</b> ' + dc.userId + '</div>';
+                    deletedHtml += '<div><b>Channel:</b> ' + dc.channel + '</div>';
+                    deletedHtml += '<div style="color:#EF4444;"><b>Reason:</b> ' + dc.error + '</div>';
+                    deletedHtml += '</div>';
+                });
+                deletedHtml += '</div>';
+                deletedChannelsDiv.innerHTML = deletedHtml;
+            }
+
+            setTimeout(function() { progressDiv.style.display = 'none'; deletedChannelsDiv.innerHTML = ''; }, 8000);
         } else {
-            setTimeout(function() { progressDiv.style.display = 'none'; }, 1000);
+            setTimeout(function() { progressDiv.style.display = 'none'; }, 1500);
         }
+
+        loadPromoCodes();
     } else {
         progressDiv.style.display = 'none';
+        if (result) toast(result.error || 'Failed to create promo', 'error');
     }
 }
 
+function clearPromoFilters() {
+    document.getElementById('promo-search-code').value = '';
+    document.getElementById('promo-search-owner').value = '';
+    document.getElementById('promo-search-status').value = '';
+    document.getElementById('promo-search-creator').value = '';
+    document.getElementById('promo-container').innerHTML = '';
+}
+
 async function loadPromoCodes() {
-    var result = await apiCall('/admin/promo/list');
+    var code = document.getElementById('promo-search-code').value.trim();
+    var owner = document.getElementById('promo-search-owner').value;
+    var status = document.getElementById('promo-search-status').value;
+    var creator = document.getElementById('promo-search-creator').value;
+
     var container = document.getElementById('promo-container');
-    container.innerHTML = '';
-    if (result && result.data && result.data.length > 0) {
-        result.data.forEach(function(p) {
-            var typeClass = p.reward_type === 'dogs' ? 'badge-blue' : 'badge-active';
-            var typeLabel = p.reward_type === 'dogs' ? 'DOGS' : 'Power';
-            container.innerHTML += '<div class="promo-card"><div class="promo-card-header"><span class="promo-code">' + p.code + '</span><button class="btn btn-outline btn-sm" onclick="copyText(\'' + p.code + '\')"><i class="fas fa-copy"></i></button><button class="btn btn-danger btn-sm" onclick="deletePromo(\'' + p.code + '\')"><i class="fas fa-trash"></i></button></div><div class="promo-card-body"><div class="promo-detail"><span class="label">Reward:</span> ' + p.reward_amount + '</div><div class="promo-detail"><span class="label">Type:</span> <span class="badge ' + typeClass + '">' + typeLabel + '</span></div><div class="promo-detail"><span class="label">Used:</span> ' + (p.total_uses || 0) + ' / ' + (p.max_uses || '∞') + '</div></div></div>';
-        });
+    container.innerHTML = '<div class="text-muted">Loading...</div>';
+
+    var result = await apiCall('/admin/promo/list', {
+        code: code || null,
+        owner: owner ? parseInt(owner) : null,
+        status: status || null,
+        creator: creator || null
+    });
+
+    if (!result || !result.success || !result.data || result.data.length === 0) {
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-ticket"></i><p>No promo codes found</p></div>';
+        return;
     }
+
+    container.innerHTML = result.data.map(function(p) {
+        var typeClass = p.reward_type === 'dogs' ? 'badge-blue' : 'badge-active';
+        var typeLabel = p.reward_type === 'dogs' ? 'DOGS' : 'Power';
+        var isCompleted = (p.total_uses || 0) >= (p.max_uses || 0);
+        var statusBadge = isCompleted ? '<span class="badge badge-completed">Completed</span>' : '<span class="badge badge-active">Active</span>';
+        var isAdminCode = !p.owner || p.owner === 0;
+        return '<div class="promo-card">' +
+            '<div class="promo-card-header">' +
+                '<span class="promo-code">' + p.code + '</span>' +
+                statusBadge +
+                (isAdminCode ? '<span class="badge badge-admin">Admin</span>' : '<span class="badge badge-user">User</span>') +
+                '<button class="btn btn-outline btn-sm" onclick="copyText(\'' + p.code + '\')"><i class="fas fa-copy"></i></button>' +
+                '<button class="btn btn-danger btn-sm" onclick="deletePromo(\'' + p.code + '\')"><i class="fas fa-trash"></i></button>' +
+            '</div>' +
+            '<div class="promo-card-body">' +
+                '<div class="promo-detail"><span class="label">Reward:</span> ' + p.reward_amount + ' <span class="badge ' + typeClass + '">' + typeLabel + '</span></div>' +
+                '<div class="promo-detail"><span class="label">Used:</span> ' + (p.total_uses || 0) + ' / ' + (p.max_uses || '∞') + '</div>' +
+                (p.owner && p.owner !== 0 ? '<div class="promo-detail"><span class="label">Owner:</span> ' + p.owner + '</div>' : '') +
+                (p.required_channel ? '<div class="promo-detail"><span class="label">Required:</span> @' + p.required_channel + '</div>' : '') +
+            '</div>' +
+        '</div>';
+    }).join('');
 }
 
 function copyText(text) {
@@ -1626,94 +2138,86 @@ function copyText(text) {
     toast('Copied!', 'success');
 }
 
-async function deletePromo(code) {
-    if (!confirm('Delete promo ' + code + '?')) return;
-    var result = await apiCall('/admin/promo/delete', { code: code });
-    if (result) { toast('Promo deleted', 'success'); loadPromoCodes(); }
+function deletePromo(code) {
+    showConfirm('Delete Promo', 'Delete promo ' + code + '?', async function() {
+        var result = await apiCall('/admin/promo/delete', { code: code });
+        if (result && result.success) { toast('Promo deleted', 'success'); loadPromoCodes(); }
+        else if (result) toast(result.error || 'Failed', 'error');
+    });
+}
+
+function clearPromotionFilters() {
+    document.getElementById('promotion-search-input').value = '';
+    document.getElementById('promotion-search-status').value = '';
+    document.getElementById('promotions-container').innerHTML = '<div class="empty-state"><i class="fas fa-filter"></i><p>Choose a filter and click Search</p></div>';
 }
 
 async function loadPromotions() {
     var searchInput = document.getElementById('promotion-search-input').value.trim();
     var status = document.getElementById('promotion-search-status').value;
+
     var container = document.getElementById('promotions-container');
     container.innerHTML = '<div class="text-muted">Loading...</div>';
-    
-    var result = await apiCall('/admin/promotions/list', { status: status || null });
-    if (result && result.data) {
-        allPromotions = result.data;
-        var filtered = filterPromotions(allPromotions, searchInput);
-        renderPromotions(filtered);
-    } else {
-        container.innerHTML = '<div class="text-muted">No promotions found</div>';
-    }
-}
 
-function filterPromotions(promotions, query) {
-    if (!query) return promotions;
-    var q = query.toLowerCase().trim();
-    return promotions.filter(function(p) {
-        var userIdMatch = String(p.user_id).toLowerCase().includes(q);
-        var channelMatch = (p.channel || '').toLowerCase().includes(q);
-        var linkMatch = (p.link || '').toLowerCase().includes(q);
-        var usernameMatch = (p.username || '').toLowerCase().includes(q);
-        var firstNameMatch = (p.first_name || '').toLowerCase().includes(q);
-        return userIdMatch || channelMatch || linkMatch || usernameMatch || firstNameMatch;
+    var result = await apiCall('/admin/promotions/list', {
+        query: searchInput || null,
+        status: status || null
     });
+
+    if (!result || !result.success || !result.data || result.data.length === 0) {
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-rocket"></i><p>No promotions found</p></div>';
+        return;
+    }
+
+    allPromotions = result.data;
+    renderPromotions(allPromotions);
 }
 
 function renderPromotions(promotions) {
     var container = document.getElementById('promotions-container');
     if (!promotions || promotions.length === 0) {
-        container.innerHTML = '<div class="text-muted">No promotions found</div>';
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-rocket"></i><p>No promotions found</p></div>';
         return;
     }
 
-    var html = '';
-    promotions.forEach(function(p) {
+    container.innerHTML = promotions.map(function(p) {
         var statusClass = p.status || 'pending';
         var statusLabel = p.status === 'approved' ? '✅ Approved' : p.status === 'rejected' ? '❌ Rejected' : '⏳ Pending';
-        var date = new Date(p.submitted_at);
-        var dateStr = String(date.getDate()).padStart(2,'0') + '/' + String(date.getMonth()+1).padStart(2,'0') + '/' + date.getFullYear() + ' ' + String(date.getHours()).padStart(2,'0') + ':' + String(date.getMinutes()).padStart(2,'0');
-        
-        html += `
-            <div class="promotion-card">
-                <div class="promotion-card-header">
-                    <div>
-                        <div class="promotion-user">👤 User: ${p.user_id}${p.first_name ? ' (' + p.first_name + ')' : ''}</div>
-                        <div class="promotion-channel">📢 Channel: ${p.channel || 'N/A'}</div>
-                        <div class="promotion-link">🔗 Link: ${p.link || 'N/A'}</div>
-                        <div class="promotion-status ${statusClass}">${statusLabel}</div>
-                        <div class="text-muted" style="font-size:11px;margin-top:4px;">📅 ${dateStr}</div>
-                    </div>
-                </div>
-                <div class="promotion-actions">
-                    ${p.status === 'pending' ? `<button class="btn btn-success btn-sm" onclick="updatePromotion('${p.user_id}','approved')"><i class="fas fa-check"></i> Approve</button>` : ''}
-                    ${p.status === 'pending' ? `<button class="btn btn-danger btn-sm" onclick="updatePromotion('${p.user_id}','rejected')"><i class="fas fa-times"></i> Reject</button>` : ''}
-                    <button class="btn btn-danger btn-sm" onclick="deletePromotion('${p.user_id}')"><i class="fas fa-trash"></i> Delete</button>
-                </div>
-            </div>
-        `;
+        var dateStr = formatDate(p.submitted_at);
+
+        return '<div class="promotion-card">' +
+            '<div class="promotion-card-header">' +
+                '<div>' +
+                    '<div class="promotion-user">👤 User: ' + p.user_id + (p.first_name ? ' (' + p.first_name + ')' : '') + '</div>' +
+                    '<div class="promotion-channel">📢 Channel: ' + (p.channel || 'N/A') + '</div>' +
+                    '<div class="promotion-link">🔗 Link: ' + (p.link || 'N/A') + '</div>' +
+                    '<div class="promotion-status ' + statusClass + '" style="margin-top:6px;display:inline-block;">' + statusLabel + '</div>' +
+                    '<div class="text-muted" style="font-size:11px;margin-top:4px;">📅 ' + dateStr + '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="promotion-actions">' +
+                (p.status === 'pending' ? '<button class="btn btn-success btn-sm" onclick="updatePromotion(' + p.user_id + ',\'approved\')"><i class="fas fa-check"></i> Approve</button>' : '') +
+                (p.status === 'pending' ? '<button class="btn btn-danger btn-sm" onclick="updatePromotion(' + p.user_id + ',\'rejected\')"><i class="fas fa-times"></i> Reject</button>' : '') +
+                '<button class="btn btn-danger btn-sm" onclick="deletePromotion(' + p.user_id + ')"><i class="fas fa-trash"></i> Delete</button>' +
+            '</div>' +
+        '</div>';
+    }).join('');
+}
+
+function updatePromotion(userId, status) {
+    showConfirm('Update Promotion', 'Update promotion for user ' + userId + ' to ' + status + '?', async function() {
+        var result = await apiCall('/admin/promotions/update', { userId: userId, status: status });
+        if (result && result.success) { toast('Promotion ' + status + '!', 'success'); loadPromotions(); }
+        else if (result) toast(result.error || 'Failed', 'error');
+    }, status === 'approved');
+}
+
+function deletePromotion(userId) {
+    showConfirm('Delete Promotion', 'Delete promotion for user ' + userId + '?', async function() {
+        var result = await apiCall('/admin/promotions/delete', { userId: userId });
+        if (result && result.success) { toast('Promotion deleted', 'success'); loadPromotions(); }
+        else if (result) toast(result.error || 'Failed', 'error');
     });
-    
-    container.innerHTML = html;
-}
-
-async function updatePromotion(userId, status) {
-    if (!confirm(`Update promotion for user ${userId} to ${status}?`)) return;
-    var result = await apiCall('/admin/promotions/update', { userId: parseInt(userId), status: status });
-    if (result) {
-        toast(`Promotion ${status}!`, 'success');
-        loadPromotions();
-    }
-}
-
-async function deletePromotion(userId) {
-    if (!confirm(`Delete promotion for user ${userId}?`)) return;
-    var result = await apiCall('/admin/promotions/delete', { userId: parseInt(userId) });
-    if (result) {
-        toast('Promotion deleted!', 'success');
-        loadPromotions();
-    }
 }
 
 function toggleNotifUser() {
@@ -1737,11 +2241,9 @@ function addNotifButton() {
 
 function renderNotifButtons() {
     var container = document.getElementById('notif-buttons-list');
-    var html = '';
-    notifButtons.forEach(function(btn, i) {
-        html += '<span class="notif-btn-tag" style="background:var(--glass-bg);padding:4px 12px;border-radius:20px;border:1px solid var(--glass-border);font-size:12px;display:inline-flex;align-items:center;gap:6px;">' + btn.text + ' <i class="fas fa-times" onclick="removeNotifButton(' + i + ')" style="cursor:pointer;color:var(--error);font-size:10px;"></i></span>';
-    });
-    container.innerHTML = html;
+    container.innerHTML = notifButtons.map(function(btn, i) {
+        return '<span style="background:var(--glass-bg);padding:4px 12px;border-radius:20px;border:1px solid var(--glass-border);font-size:12px;display:inline-flex;align-items:center;gap:6px;">' + btn.text + ' <i class="fas fa-times" onclick="removeNotifButton(' + i + ')" style="cursor:pointer;color:var(--error);font-size:10px;"></i></span>';
+    }).join('');
 }
 
 function removeNotifButton(index) {
@@ -1754,33 +2256,40 @@ async function sendNotification() {
     var userId = target === 'single' ? parseInt(document.getElementById('notif-user-id').value) : null;
     var message = document.getElementById('notif-message').value.trim();
     var photoUrl = document.getElementById('notif-photo').value.trim() || null;
-    
+
     if (!message) { toast('Enter message', 'warning'); return; }
     if (target === 'single' && !userId) { toast('Enter user ID', 'warning'); return; }
-    
+
+    var btn = document.getElementById('notif-send-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+
     var progressDiv = document.getElementById('notif-progress');
     var progressFill = document.getElementById('notif-progress-fill');
     var statusText = document.getElementById('notif-status-text');
     progressDiv.style.display = 'block';
-    progressFill.style.width = '0%';
-    statusText.textContent = 'Loading users...';
-    
-    var result = await apiCall('/admin/notifications/send', { 
-        userId: userId, 
-        message: message, 
+    progressFill.style.width = '50%';
+    statusText.textContent = 'Sending...';
+
+    var result = await apiCall('/admin/notifications/send', {
+        userId: userId,
+        message: message,
         buttons: notifButtons.length > 0 ? notifButtons : null,
         target: target,
         photoUrl: photoUrl
     });
-    
-    if (result) {
+
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Notification';
+
+    if (result && result.success) {
         progressFill.style.width = '100%';
         statusText.textContent = '✅ Sent: ' + result.sent + ' | Failed: ' + result.failed + ' | Total: ' + result.total;
-        toast('Sent: ' + result.sent + ', Failed: ' + result.failed + ', Total: ' + result.total, result.failed > 0 ? 'warning' : 'success');
-        setTimeout(function() { progressDiv.style.display = 'none'; }, 3000);
+        toast('Sent: ' + result.sent + ', Failed: ' + result.failed, result.failed > 0 ? 'warning' : 'success');
+        setTimeout(function() { progressDiv.style.display = 'none'; }, 4000);
     } else {
-        statusText.textContent = '❌ Failed to send';
         progressDiv.style.display = 'none';
+        if (result) toast(result.error || 'Failed to send', 'error');
     }
 }
 
@@ -1789,46 +2298,37 @@ async function loadTopUsers() {
     var limit = parseInt(document.getElementById('topusers-limit').value) || 20;
     var container = document.getElementById('topusers-container');
     container.innerHTML = '<div class="text-muted">Loading...</div>';
-    
-    var result = await apiCall('/admin/topusers/list', { type: type, limit: limit });
-    if (result && result.data) {
-        renderTopUsers(result.data, type);
-    } else {
-        container.innerHTML = '<div class="text-muted">No users found</div>';
-    }
-}
 
-function renderTopUsers(data, type) {
-    var container = document.getElementById('topusers-container');
-    if (!data || data.length === 0) {
-        container.innerHTML = '<div class="text-muted">No users found</div>';
+    var result = await apiCall('/admin/topusers/list', { type: type, limit: limit });
+
+    if (!result || !result.success || !result.data || result.data.length === 0) {
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-chart-line"></i><p>No users found</p></div>';
         return;
     }
 
+    var data = result.data;
     var typeLabel = type === 'dogs' ? 'DOGS Balance' : 'Power Balance';
-    var icon = type === 'dogs' ? '🐕' : '⚡';
 
     var html = '<div class="topusers-grid">';
-    html += '<div class="topuser-header"><span>#</span><span>User</span><span style="text-align:right;">' + typeLabel + '</span></div>';
-    
+    html += '<div class="topuser-header"><span>#</span><span>User</span><span style="text-align:right;">' + typeLabel + '</span><span></span></div>';
+
     data.forEach(function(user, index) {
         var rank = index + 1;
         var medal = rank <= 3 ? ['🥇', '🥈', '🥉'][rank - 1] : '#' + rank;
-        html += `
-            <div class="topuser-item">
-                <span class="rank">${medal}</span>
-                <div class="user-info">
-                    <img src="${user.photo_url || DOGS_ICON}" onerror="this.src='${DOGS_ICON}'">
-                    <div>
-                        <div class="name">${user.first_name || 'User'}</div>
-                        <div class="id">ID: ${user.user_id}</div>
-                    </div>
-                </div>
-                <div class="value">${icon} ${user.value}</div>
-            </div>
-        `;
+        html += '<div class="topuser-item">' +
+            '<span class="rank">' + medal + '</span>' +
+            '<div class="user-info">' +
+                '<img src="' + (user.photo_url || DOGS_ICON) + '" onerror="this.src=\'' + DOGS_ICON + '\'">' +
+                '<div>' +
+                    '<div class="name">' + truncate(user.first_name, 12) + '</div>' +
+                    '<div class="id">ID: ' + user.user_id + '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="value">' + formatNumber(user.value) + '</div>' +
+            '<button class="btn btn-danger btn-sm" onclick="deleteUser(' + user.user_id + ')"><i class="fas fa-trash"></i></button>' +
+        '</div>';
     });
-    
+
     html += '</div>';
     container.innerHTML = html;
 }
